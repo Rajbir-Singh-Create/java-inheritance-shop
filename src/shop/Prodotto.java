@@ -29,8 +29,12 @@ public class Prodotto {
         return this.nome;
     }
 
-    public String setNome(String nome){
-        return this.nome = nome;
+    public void setNome(String nome){
+        if (nome != null){
+            this.nome = nome;
+        } else {
+            System.out.println("Inserisci un nome valido");
+        }
     }
 
     public String getMarca() {
@@ -38,7 +42,11 @@ public class Prodotto {
     }
 
     public void setMarca(String marca) {
-        this.marca = marca;
+        if (marca != null){
+            this.marca = marca;
+        } else {
+            System.out.println("Inserisci una marca valida");
+        }
     }
 
     public double getPrezzo() {
@@ -46,7 +54,11 @@ public class Prodotto {
     }
 
     public void setPrezzo(double prezzo) {
-        this.prezzo = prezzo;
+        if (prezzo > 0){
+            this.prezzo = prezzo;
+        } else {
+            System.out.println("Impossibile impostare un prezzo minore o uguale a 0");
+        }
     }
 
     public double getIva() {
@@ -54,7 +66,11 @@ public class Prodotto {
     }
 
     public void setIva(double iva) {
-        this.iva = iva;
+        if (iva == 1.04 || iva == 1.1 || iva == 1.22){
+            this.iva = iva;    
+        } else {
+            System.out.println("Impossibile impostare un iva non convenzionale.");
+        }
     }
 
     public double getPriceWithIva(){

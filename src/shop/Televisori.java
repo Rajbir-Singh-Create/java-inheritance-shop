@@ -9,7 +9,11 @@ public class Televisori extends Prodotto{
     }
 
     public void setDimensioni(double dimensioni) {
-        this.dimensioni = dimensioni;
+        if (dimensioni > 24){
+            this.dimensioni = dimensioni;
+        } else {
+            System.out.println("Impossibile impostare una dimensione inferiore ai 24 pollici");
+        }
     }
 
     public boolean isSmart() {

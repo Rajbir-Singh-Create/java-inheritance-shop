@@ -10,6 +10,7 @@ public class Smartphone extends Prodotto{
         calcolaIMEI();
     }
 
+    // Metodo di utilità per generare il codice IMEI
     private void calcolaIMEI(){
         Random r = new Random();
         this.IMEI = r.nextInt(10000, 100000);
@@ -23,7 +24,11 @@ public class Smartphone extends Prodotto{
         return this.storageCapacity;
     }
 
-    public double setStorageCapacity(double storageCapacity){
-        return this.storageCapacity = storageCapacity;
+    public void setStorageCapacity(double storageCapacity){
+        if (storageCapacity >= 64){
+            this.storageCapacity = storageCapacity;
+        } else {
+            System.out.println("Impossibile impostare la capacità sotto ai 64 GB");
+        }
     }
 }

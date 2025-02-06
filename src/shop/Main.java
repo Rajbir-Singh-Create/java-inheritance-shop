@@ -47,12 +47,14 @@ public class Main {
         boseNC700.setIva(1.22);
         boseNC700.setColore("Jet Black");
         boseNC700.setWireless(true);
-
+        boseNC700.setCablate(true);
+        
         // Stampo le caratteristiche
         System.out.println("Prodotto: " + boseNC700.getMarca() + " " + boseNC700.getNome());
         System.out.println("Codice prodotto: " + boseNC700.getCodice());
         System.out.println("Colore: " + boseNC700.getColore());
         System.out.println("Funzionalità wireless: " + boseNC700.isWireless());
+        System.out.println("Possibilità di utilizzo tramite cavo: " + boseNC700.isCablate());
         System.out.println("Prezzo base: " + boseNC700.getPrezzo());
         System.out.println("Prezzo con iva: " + boseNC700.getPriceWithIva());
     }
