@@ -5,7 +5,13 @@ import java.util.Scanner;
 public class Carrello {
     public static void main(String[] args) throws Exception {
         // Inizializzo un array di tre elementi
-        Prodotto carrelloProdotti[] = new Prodotto[3];
+        Prodotto carrelloProdotti[];
+
+        // Chiedo all'utente quanti prodotti vuole inserire nel carrello
+        Scanner productNum = new Scanner(System.in);
+        System.out.println("Quanti prodotti vuoi inserire nel carrello?");
+        int numProdotti = productNum.nextInt();
+        carrelloProdotti = new Prodotto[numProdotti];
 
         // Apro il flusso per l'input dall'utente
         Scanner scanProduct = new Scanner(System.in);
@@ -21,6 +27,12 @@ public class Carrello {
                 Smartphone smartphone1 = new Smartphone();
                 carrelloProdotti[i] = smartphone1;
                 
+                // Se volessi chiedere all'utente di inserire tutte le caratteristiche a mano:
+                // Scanner marcaIn = new Scanner(System.in);
+                // System.out.println("Seleziona la marca:");
+                // String marca = marcaIn.nextLine();
+                // smartphone1.setMarca(marca);
+
                 // Set delle caratteristiche
                 smartphone1.setNome("Galaxy S25 Ultra");
                 smartphone1.setMarca("Samsung");
@@ -51,12 +63,14 @@ public class Carrello {
                 cuffie1.setWireless(true);
                 cuffie1.setCablate(true);
             }
-            
         }
 
         System.out.println(" ");
         // Stampo il carrello
         for(int j = 0; j < carrelloProdotti.length; j++){
+            if(carrelloProdotti[j] == null){
+                System.out.println("Non ci sono altri prodotti disponibili.");
+            }
             System.out.println(carrelloProdotti[j]);
         }
         
