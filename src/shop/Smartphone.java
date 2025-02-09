@@ -31,4 +31,9 @@ public class Smartphone extends Prodotto{
             System.out.println("Impossibile impostare la capacità sotto ai 64 GB");
         }
     }
+
+    @Override
+    public String toString(){
+        return super.toString() + ", Codice IMEI: " + getIMEI() + ", capacità archiviazione: " + getStorageCapacity() + "GB";
+    }
 }

@@ -76,4 +76,13 @@ public class Prodotto {
     public double getPriceWithIva(){
         return this.prezzo * this.iva;
     }
+
+    @Override
+    public String toString(){
+        return "Codice prodotto: " + getCodice()
+        + ", Prodotto: " + getMarca() + " " + getNome()
+        + ", prezzo: " + getPrezzo()
+        + ", iva: " + getIva()
+        + ", prezzo intero: " + getPriceWithIva();
+    }
 }
