@@ -4,13 +4,14 @@ import java.util.Scanner;
 
 public class Carrello {
     public static void main(String[] args) throws Exception {
-        // Inizializzo un array di elementi di tipo Prodotto
+        // dichiaro un array di elementi di tipo Prodotto
         Prodotto carrelloProdotti[];
 
         // Chiedo all'utente quanti prodotti vuole inserire nel carrello
         Scanner productNum = new Scanner(System.in);
         System.out.println("Quanti prodotti vuoi valorizzare?");
         int numProdotti = productNum.nextInt();
+        // inizializzo l'array col numero di elementi definito dall'utente
         carrelloProdotti = new Prodotto[numProdotti];
         
         // Non sappiamo quale scelta farà l'utente
