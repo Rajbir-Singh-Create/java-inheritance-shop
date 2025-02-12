@@ -1,8 +1,13 @@
 package shop;
 
-public class Televisori extends Prodotto{
+public class Televisore extends Prodotto{
     private double dimensioni;
     private boolean smart;
+
+    public Televisore(double dimensioni, boolean smart) {
+        this.dimensioni = dimensioni;
+        this.smart = smart;
+    }
 
     public double getDimensioni() {
         return dimensioni;
@@ -26,6 +31,7 @@ public class Televisori extends Prodotto{
 
     @Override
     public String toString() {
-        return super.toString() + ", dimensioni: " + getDimensioni() + ", smart TV: " + isSmart();
+        String smart = isSmart() ? "sì" : "no";
+        return super.toString() + ", dimensioni: " + getDimensioni() + ", smart TV: " + smart;
     }
 }

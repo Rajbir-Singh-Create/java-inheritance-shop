@@ -4,131 +4,113 @@ import java.util.Scanner;
 
 public class Carrello {
     public static void main(String[] args) throws Exception {
-        // Inizializzo un array di tre elementi
+        // Inizializzo un array di elementi di tipo Prodotto
         Prodotto carrelloProdotti[];
 
         // Chiedo all'utente quanti prodotti vuole inserire nel carrello
         Scanner productNum = new Scanner(System.in);
-        System.out.println("Quanti prodotti vuoi inserire nel carrello?");
+        System.out.println("Quanti prodotti vuoi valorizzare?");
         int numProdotti = productNum.nextInt();
         carrelloProdotti = new Prodotto[numProdotti];
-
-        // Apro il flusso per l'input dall'utente
-        Scanner scanProduct = new Scanner(System.in);
         
+        // Non sappiamo quale scelta farà l'utente
+        // ma sappiamo che si tratta di un prodotto
+        // quindi inizializziamo il prodotto a null
+        Prodotto prodotto = null;
+
         // Itero per la lunghezza dell'array per inserire il prodotto
         for(int i = 0; i < carrelloProdotti.length; i++){
-            System.out.println("Inserisci il prodotto:");
+            // Apro il flusso per l'input dall'utente
+            Scanner scanProduct = new Scanner(System.in);
+            System.out.println(" ");
+            System.out.println("Decidere quale prodotto si vuole valorizzare:");
             String nomeProdotto = scanProduct.nextLine();
             
             // Controllo quale tipo di prodotto è stato inserito
             // e uso il costruttore opportuno in base all'input
             if (nomeProdotto.equals("Smartphone")){
-                Smartphone smartphone1 = new Smartphone();
-                carrelloProdotti[i] = smartphone1;
+                // Prendo i valori
+                System.out.println("Quanti GB ha lo smartphone?");
+                double storageCapacity = scanProduct.nextDouble();
                 
-                // Se volessi chiedere all'utente di inserire tutte le caratteristiche a mano:
-                // Scanner marcaIn = new Scanner(System.in);
-                // System.out.println("Seleziona la marca:");
-                // String marca = marcaIn.nextLine();
-                // smartphone1.setMarca(marca);
+                // e li uso per inizializzare l'oggetto
+                prodotto = new Smartphone(storageCapacity);
+                
+                // Prendo il resto delle caratteristiche del prodotto
+                buildProdotto(prodotto);
 
-                // Set delle caratteristiche
-                smartphone1.setNome("Galaxy S25 Ultra");
-                smartphone1.setMarca("Samsung");
-                smartphone1.setPrezzo(1014.00);
-                smartphone1.setIva(1.22);
-                smartphone1.setStorageCapacity(512);
+                // inserisco il prodotto nell'array
+                carrelloProdotti[i] = prodotto;
             } else if (nomeProdotto.equals("Televisore")){
-                Televisori televisore1 = new Televisori();
-                carrelloProdotti[i] = televisore1;
+                // Prendo i valori
+                System.out.println("Quanti pollici ha la TV?");
+                double pollici = scanProduct.nextDouble();
+                System.out.println("E' smart?");
+                System.out.println("(1 se sì, 2 se no)");
+                int sceltaSmart = scanProduct.nextInt();
+                boolean smart = false;
+                if (sceltaSmart== 1){
+                    smart = true;
+                }
+
+                // e li uso per inizializzare l'oggetto
+                prodotto = new Televisore(pollici, smart);
                 
-                // Set delle caratteristiche
-                televisore1.setNome("QLED 55");
-                televisore1.setMarca("LG");
-                televisore1.setPrezzo(2000.00);
-                televisore1.setIva(1.22);
-                televisore1.setDimensioni(55.5);
-                televisore1.setSmart(true);
+                // Prendo il resto delle caratteristiche del prodotto
+                buildProdotto(prodotto);
+
+                // inserisco il prodotto nell'array
+                carrelloProdotti[i] = prodotto;
             } else if (nomeProdotto.equals("Cuffie")){
-                Cuffie cuffie1 = new Cuffie();
-                carrelloProdotti[i] = cuffie1;
+                // Prendo i valori
+                System.out.println("Inserisci il colore delle cuffie:");
+                String colore = scanProduct.nextLine();
+                System.out.println("Le cuffie sono wireless? (y/n)");
+                String sceltaWireless = scanProduct.nextLine();
+                boolean wireless = false;
+                if(sceltaWireless.equalsIgnoreCase("y")){
+                    wireless = true;
+                }
+
+                // e li uso per inizializzare l'oggetto
+                prodotto = new Cuffie(colore, wireless);
                 
-                // Set delle caratteristiche
-                cuffie1.setNome("NC700");
-                cuffie1.setMarca("Bose");
-                cuffie1.setPrezzo(250.00);
-                cuffie1.setIva(1.22);
-                cuffie1.setColore("Jet Black");
-                cuffie1.setWireless(true);
-                cuffie1.setCablate(true);
+                // Prendo il resto delle caratteristiche del prodotto
+                buildProdotto(prodotto);
+
+                // inserisco il prodotto nell'array
+                carrelloProdotti[i] = prodotto;
+            } else {
+                System.out.println("Non ci sono altri prodotti disponibili.");
             }
         }
 
         System.out.println(" ");
         // Stampo il carrello
         for(int j = 0; j < carrelloProdotti.length; j++){
-            if(carrelloProdotti[j] == null){
-                System.out.println("Non ci sono altri prodotti disponibili.");
-            }
             System.out.println(carrelloProdotti[j]);
         }
-        
-        
-        // Smartphone galaxyS25 = new Smartphone();
-        // // Set delle caratteristiche
-        // galaxyS25.setNome("Galaxy S25 Ultra");
-        // galaxyS25.setMarca("Samsung");
-        // galaxyS25.setPrezzo(1014.00);
-        // galaxyS25.setIva(1.22);
-        // galaxyS25.setStorageCapacity(512);
 
-        // // Stampo le caratteristiche
-        // System.out.println("Prodotto: " + galaxyS25.getMarca() + " " + galaxyS25.getNome());
-        // System.out.println("Codice prodotto: " + galaxyS25.getCodice());
-        // System.out.println("Codice IMEI: " + galaxyS25.getIMEI());
-        // System.out.println("capacità: " + galaxyS25.getStorageCapacity() + "GB");
-        // System.out.println("Prezzo base: " + galaxyS25.getPrezzo());
-        // System.out.println("Prezzo con iva: " + galaxyS25.getPriceWithIva());
+        // System.out.println(prodotto);
+    }
 
-        // System.out.println(" ");
-        
-        // Televisori lg_tv = new Televisori();
-        // // Set delle caratteristiche
-        // lg_tv.setNome("QLED 55");
-        // lg_tv.setMarca("LG");
-        // lg_tv.setPrezzo(2000.00);
-        // lg_tv.setIva(1.22);
-        // lg_tv.setDimensioni(55.5);
-        // lg_tv.setSmart(true);
+    private static void buildProdotto(Prodotto prodotto){
+        Scanner scan = new Scanner(System.in);
 
-        // // Stampo le caratteristiche
-        // System.out.println("Prodotto: " + lg_tv.getMarca() + " " + lg_tv.getNome());
-        // System.out.println("Codice prodotto: " + lg_tv.getCodice());
-        // System.out.println("Dimensioni: " + lg_tv.getDimensioni() + " pollici");
-        // System.out.println("smart: " + lg_tv.isSmart());
-        // System.out.println("Prezzo base: " + lg_tv.getPrezzo());
-        // System.out.println("Prezzo con iva: " + lg_tv.getPriceWithIva());
+        System.out.println("Inserisci il nome del prodotto:");
+        String nome = scan.nextLine();
+        prodotto.setNome(nome);
 
-        // System.out.println(" ");
+        System.out.println("Inserisci la marca:");
+        String marca = scan.nextLine();
+        prodotto.setMarca(marca);
 
-        // Cuffie boseNC700 = new Cuffie();
-        // // Set delle caratteristiche
-        // boseNC700.setNome("NC700");
-        // boseNC700.setMarca("Bose");
-        // boseNC700.setPrezzo(250.00);
-        // boseNC700.setIva(1.22);
-        // boseNC700.setColore("Jet Black");
-        // boseNC700.setWireless(true);
-        // boseNC700.setCablate(true);
-        
-        // // Stampo le caratteristiche
-        // System.out.println("Prodotto: " + boseNC700.getMarca() + " " + boseNC700.getNome());
-        // System.out.println("Codice prodotto: " + boseNC700.getCodice());
-        // System.out.println("Colore: " + boseNC700.getColore());
-        // System.out.println("Funzionalità wireless: " + boseNC700.isWireless());
-        // System.out.println("Possibilità di utilizzo tramite cavo: " + boseNC700.isCablate());
-        // System.out.println("Prezzo base: " + boseNC700.getPrezzo());
-        // System.out.println("Prezzo con iva: " + boseNC700.getPriceWithIva());
+        System.out.println("Inserisci il prezzo:");
+        double prezzo = scan.nextDouble();
+        prodotto.setPrezzo(prezzo);
+
+        System.out.println("Inserisci l'iva:");
+        double iva = scan.nextDouble();
+        prodotto.setIva(iva);
     }
 }

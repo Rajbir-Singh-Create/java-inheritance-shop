@@ -3,21 +3,22 @@ package shop;
 import java.util.Random;
 
 public class Smartphone extends Prodotto{
-    private int IMEI;
+    private int codiceIMEI;
     private double storageCapacity;
 
-    public Smartphone(){
+    public Smartphone(double storageCapacity) {
+        this.storageCapacity = storageCapacity;
         calcolaIMEI();
     }
 
     // Metodo di utilità per generare il codice IMEI
     private void calcolaIMEI(){
         Random r = new Random();
-        this.IMEI = r.nextInt(10000, 100000);
+        this.codiceIMEI = r.nextInt(10000, 100000);
     }
 
     public int getIMEI(){
-        return this.IMEI;
+        return this.codiceIMEI;
     }
 
     public double getStorageCapacity(){
@@ -34,6 +35,6 @@ public class Smartphone extends Prodotto{
 
     @Override
     public String toString(){
-        return super.toString() + ", Codice IMEI: " + getIMEI() + ", capacità archiviazione: " + getStorageCapacity() + "GB";
+        return super.toString() + ", Codice IMEI: " + getIMEI() + ", capacità archiviazione: " + getStorageCapacity() + " GB";
     }
 }

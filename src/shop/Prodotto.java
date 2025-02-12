@@ -22,11 +22,11 @@ public class Prodotto {
 
     // getter per permettere di accedere al codice Prodotto solo in lettura
     public int getCodice(){
-        return this.codice;
+        return codice;
     }
 
     public String getNome(){
-        return this.nome;
+        return nome;
     }
 
     public void setNome(String nome){

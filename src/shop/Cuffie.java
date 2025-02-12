@@ -2,8 +2,12 @@ package shop;
 
 public class Cuffie extends Prodotto{
     private String colore;
-    private boolean cablate;
     private boolean wireless;
+
+    public Cuffie(String colore, boolean wireless) {
+        this.colore = colore;
+        this.wireless = wireless;
+    }
 
     public String getColore() {
         return colore;
@@ -11,14 +15,6 @@ public class Cuffie extends Prodotto{
 
     public void setColore(String colore) {
         this.colore = colore;
-    }
-
-    public boolean isCablate() {
-        return cablate;
-    }
-
-    public void setCablate(boolean cablate) {
-        this.cablate = cablate;
     }
 
     public boolean isWireless() {
@@ -31,7 +27,7 @@ public class Cuffie extends Prodotto{
 
     @Override
     public String toString() {
-        return super.toString() + ", colore: " + getColore() + ", Funzionalità wireless: " + isWireless()
-            + ", Possibilità di utilizzo tramite cavo: " + isCablate();
+        String wireless = isWireless() ? "sì" : "no";
+        return super.toString() + ", colore: " + getColore() + ", Funzionalità wireless: " + wireless;
     }
 }
